@@ -1,0 +1,95 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "env-up",
+            "command": "docker-compose",
+            "args": [
+                "-f",
+                "docker-compose.debug.yml",
+                "up",
+                "--build"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "env-stop",
+            "command": "docker-compose",
+            "args": [
+                "-f",
+                "docker-compose.debug.yml",
+                "kill"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "command": "docker-compose",
+            "args": [
+                "-f",
+                "docker-compose.debug.yml",
+                "exec",
+                "app",
+                "dotnet",
+                "build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test",
+            "command": "docker-compose",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "args": [
+                "-f",
+                "docker-compose.debug.yml",
+                "exec",
+                "app",
+                "dotnet",
+                "test",
+                "--filter",
+                "category!=integration",
+                "App.Tests/App.Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test-integration",
+            "command": "docker-compose",
+            "group": "test",
+            "args": [
+                "-f",
+                "docker-compose.debug.yml",
+                "exec",
+                "app",
+                "dotnet",
+                "test",
+                "--filter",
+                "category=integration",
+                "App.Tests/App.Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test-everything",
+            "command": "docker-compose",
+            "group": "test",
+            "args": [
+                "-f",
+                "docker-compose.debug.yml",
+                "exec",
+                "app",
+                "dotnet",
+                "test",
+                "App.Tests/App.Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

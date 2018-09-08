@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name":".NET Core Docker Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "cwd": "/template",
+            "program": "/template/App/bin/container/Debug/netcoreapp2.1/App.dll",
+            "sourceFileMap": {
+                "/template": "${workspaceRoot}"
+            },
+            "pipeTransport": {
+                "pipeProgram": "docker-compose",
+                "pipeCwd": "${workspaceRoot}",
+                "debuggerPath": "/vsdbg/vsdbg",
+                "quoteArgs": false,
+                "pipeArgs": [ "-f", "docker-compose.debug.yml", "exec", "-T", "app" ]
+            }
+        }
+    ]
+}
