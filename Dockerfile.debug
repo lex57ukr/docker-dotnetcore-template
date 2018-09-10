@@ -8,5 +8,5 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg
 
-WORKDIR /template
+WORKDIR /solution
 ENTRYPOINT ["/bin/bash", "-c", "sleep infinity"]

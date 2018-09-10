@@ -6,10 +6,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "cwd": "/template",
-            "program": "/template/App/bin/container/Debug/netcoreapp2.1/App.dll",
+            "cwd": "/solution",
+            "program": "/solution/App/bin/container/Debug/netcoreapp2.1/App.dll",
             "sourceFileMap": {
-                "/template": "${workspaceRoot}"
+                "/solution": "${workspaceRoot}"
             },
             "pipeTransport": {
                 "pipeProgram": "docker-compose",

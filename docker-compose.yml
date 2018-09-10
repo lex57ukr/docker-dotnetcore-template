@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: template
+    image: dotnetcore-template-app
     build:
       context: .
       dockerfile: Dockerfile

@@ -2,9 +2,9 @@ version: '2'
 
 services:
   app:
-    image: template
+    image: dotnetcore-template-app-debug
     build:
       context: .
       dockerfile: Dockerfile.debug
     volumes:
-      - .:/template
+      - .:/solution

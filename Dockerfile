@@ -1,5 +1,5 @@
 FROM microsoft/dotnet:2.1-sdk AS build
-WORKDIR /template
+WORKDIR /solution
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
@@ -14,18 +14,18 @@ COPY App.Tests/. ./App.Tests/
 RUN dotnet build
 
 FROM build AS testrunner
-WORKDIR /template/App.Tests
+WORKDIR /solution/App.Tests
 ENTRYPOINT ["dotnet", "test", "--logger:trx"]
 
 FROM build AS test
-WORKDIR /template/App.Tests
+WORKDIR /solution/App.Tests
 RUN dotnet test
 
 FROM test AS publish
-WORKDIR /template/App
+WORKDIR /solution/App
 RUN dotnet publish -o out
 
 FROM microsoft/dotnet:2.1-runtime AS runtime
-WORKDIR /template
-COPY --from=publish /template/App/out ./
+WORKDIR /solution
+COPY --from=publish /solution/App/out ./
 ENTRYPOINT ["dotnet", "App.dll"]
