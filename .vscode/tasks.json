@@ -2,10 +2,20 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "env-build",
+            "command": "docker-compose",
+            "args": [
+                "--file",
+                "docker-compose.debug.yml",
+                "build"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "env-up",
             "command": "docker-compose",
             "args": [
-                "-f",
+                "--file",
                 "docker-compose.debug.yml",
                 "up",
                 "--detach"
@@ -16,9 +26,19 @@
             "label": "env-stop",
             "command": "docker-compose",
             "args": [
-                "-f",
+                "--file",
                 "docker-compose.debug.yml",
                 "kill"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "env-clean",
+            "command": "docker-compose",
+            "args": [
+                "--file",
+                "docker-compose.debug.yml",
+                "down"
             ],
             "problemMatcher": []
         },
@@ -26,7 +46,7 @@
             "label": "build",
             "command": "docker-compose",
             "args": [
-                "-f",
+                "--file",
                 "docker-compose.debug.yml",
                 "exec",
                 "app",
@@ -40,6 +60,19 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "clean",
+            "command": "docker-compose",
+            "args": [
+                "--file",
+                "docker-compose.debug.yml",
+                "exec",
+                "app",
+                "dotnet",
+                "clean"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "test",
             "command": "docker-compose",
             "group": {
@@ -47,7 +80,7 @@
                 "isDefault": true
             },
             "args": [
-                "-f",
+                "--file",
                 "docker-compose.debug.yml",
                 "exec",
                 "app",
@@ -64,7 +97,7 @@
             "command": "docker-compose",
             "group": "test",
             "args": [
-                "-f",
+                "--file",
                 "docker-compose.debug.yml",
                 "exec",
                 "app",
@@ -81,7 +114,7 @@
             "command": "docker-compose",
             "group": "test",
             "args": [
-                "-f",
+                "--file",
                 "docker-compose.debug.yml",
                 "exec",
                 "app",
@@ -90,6 +123,43 @@
                 "App.Tests/App.Tests.csproj"
             ],
             "problemMatcher": "$msCompile"
-        }
+        },
+        {
+            "label": "local-restore",
+            "command": "dotnet",
+            "args": [
+                "restore"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "local-clean",
+            "command": "dotnet",
+            "args": [
+                "clean"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "local-build",
+            "command": "dotnet",
+            "args": [
+                "build"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "local-test",
+            "command": "dotnet",
+            "group": "test",
+            "args": [
+                "test",
+                "--filter",
+                "category!=integration",
+                "App.Tests/App.Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
     ]
 }

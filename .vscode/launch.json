@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name":".NET Core Docker Launch (console)",
+            "name": ".NET Core Docker Launch (console)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -16,7 +16,13 @@
                 "pipeCwd": "${workspaceRoot}",
                 "debuggerPath": "/vsdbg/vsdbg",
                 "quoteArgs": false,
-                "pipeArgs": [ "-f", "docker-compose.debug.yml", "exec", "-T", "app" ]
+                "pipeArgs": [
+                    "--file",
+                    "docker-compose.debug.yml",
+                    "exec",
+                    "-T",
+                    "app"
+                ]
             }
         }
     ]
