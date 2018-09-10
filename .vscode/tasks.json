@@ -8,8 +8,7 @@
                 "-f",
                 "docker-compose.debug.yml",
                 "up",
-                "--detach",
-                "--build"
+                "--detach"
             ],
             "problemMatcher": []
         },
