@@ -6,36 +6,34 @@ NOTE: Unless indicated otherwise, assume all shell commands will work in both `b
 
 ## Features
 
-* `docker-compose` enables building interop solutions with complex infrastructure in complete isolation.
-* No hard-coded container names or process ID extraction necessary -- talk to each service by their predefined names.
-* Keep you normal workflow, i.e. build, debug, run unit tests -- there's minimum overhead to facilitate the container(s).
+* `docker-compose` enables building interop solutions with complex infrastructure in isolation.
+* No hard-coded container names or process ID extraction necessary -- talk to each service by its predefined name.
+* Keep your normal workflow, i.e. build, debug, run unit tests -- there's a minimum overhead to facilitate the container(s).
 * Files with the `.debug` suffix are used in development.
 * Production configuration can be used for creating, publishing or running an image.
 * Production image runs unit tests on build.
 * Uses the `Directory.Build.props` file to keep track of `local` vs `container` artifacts for rich coding sessions.
 
-For simple coding sessions, all you need is [git](https://git-scm.com/), [docker](https://www.docker.com/) and a source-code editor of your choice installed locally. Consider using [vscode](https://code.visualstudio.com/).
+For simple coding sessions, all you need is [git](https://git-scm.com/), [docker](https://www.docker.com/) and a source-code editor of your choice. Consider using [vscode](https://code.visualstudio.com/).
 
 ## Limitations
 
-* Production image cannot be debugged easily (because there's no debugger embedded in the image).
+* Production image cannot be debugged (because there's no debugger embedded in the image).
 * `OmniSharp` plugin and its integrated unit test runner in `vscode` run locally.
 
 For the best experience, it is recommended to install a compatible .NET Core SDK. This will not be required, if `OmniSharp` tooling can be targeted to talk to the container instead of the local installation. However, local .NET Core SDK is not required to develop in any other editor (but then you may lose debugger support).
 
 ## First things first
 
-For local development, your should enable sharing with `Docker` either your local drive or root folder containing this solution. However, mounting volumes is not required for building a production image.
+For local development, your must enable sharing with `Docker` either your local drive or root folder containing this solution. However, mounting volumes is not required for building a production image.
 
-Before you can start developing, you must *build* the environment. Building the environment is required the first time you clone this repository or if there's a change in the environment configuration.
-
-Either use the `env-build` task or run the following command manually.
+Before you can start developing, building the environment is required the first time you clone this repository or if there's a change in the environment configuration. Either use the `env-build` task or run the following command manually.
 
 ```bash
 docker-compose --file docker-compose.debug.yml build
 ```
 
-You should be able to follow your normal development process. Use the `build`, `test` or other predefined tasks in `vscode`. If you need to debug, set your break point(s) and hit F5 (must use the `.NET Core Docker Launch (console)` launch configuration).
+You should be able to follow your normal development process. Use the `build`, `test` or other predefined tasks in `vscode`. If you need to debug, set your breakpoint(s) and hit F5 (must use the `.NET Core Docker Launch (console)` launch configuration).
 
     TODO: Add a launch configuration for debugging unit tests inside a container.
 
