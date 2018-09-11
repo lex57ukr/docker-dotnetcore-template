@@ -1,12 +1,12 @@
 # Develop a .NET Core app in Docker
 
-Develop, build, debug or run a .NET Core app in a container using `docker` and `docker-compose` tools.
+Develop, build, debug or run a [.NET Core](https://dotnet.github.io) app in a container using [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) tools.
 
 NOTE: Unless indicated otherwise, assume all shell commands will work in both `bash` and `PowerShell`.
 
 ## Features
 
-* `docker-compose` enables building interop solutions with complex infrastructure in isolation.
+* [docker-compose](https://docs.docker.com/compose/) enables building interop solutions with complex infrastructure in isolation.
 * No hard-coded container names or process ID extraction necessary -- talk to each service by its predefined name.
 * Keep your normal workflow, i.e. build, debug, run unit tests -- there's a minimum overhead to facilitate the container(s).
 * Files with the `.debug` suffix are used in development.
@@ -19,15 +19,17 @@ For simple coding sessions, all you need is [git](https://git-scm.com/), [docker
 ## Limitations
 
 * Production image cannot be debugged (because there's no debugger embedded in the image).
-* `OmniSharp` plugin and its integrated unit test runner in `vscode` run locally.
+* [OmniSharp](https://www.omnisharp.net) plugin with its integrated unit test runner in [vscode](https://code.visualstudio.com/) run locally.
 
-For the best experience, it is recommended to install a compatible .NET Core SDK. This would not be required, if `OmniSharp` tooling could target the container instead of the local build. However, .NET Core SDK is not required to develop in any other editor (but then you may lose debugger support).
+It is recommended to install [.NET Core SDK](https://www.microsoft.com/net/download). This would not be required, if `OmniSharp` tooling could target the container instead of the local build.
+
+    TODO: Figure out how to make OmniSharp target containers.
 
 ## First things first
 
 For local development, your must enable sharing with `Docker` either your local drive or root folder containing this solution. However, mounting volumes is not required for building a production image.
 
-Before you can start developing, building the environment is required the first time you clone this repository or if there's a change in the environment configuration. Either use the `env-build` task or run the following command manually.
+Building the environment is required the first time you clone this repository or if there's a change in the environment configuration. Either use the `env-build` task or run the following command manually.
 
 ```bash
 docker-compose --file docker-compose.debug.yml build
@@ -61,3 +63,4 @@ This project was inspired by the following sources:
 
 * [dotnet/dotnet-docker](https://github.com/dotnet/dotnet-docker/tree/master/samples/dotnetapp)
 * [sleemer/docker.dotnet.debug](https://github.com/sleemer/docker.dotnet.debug)
+* [msbuild/customize-your-build](https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2017)
