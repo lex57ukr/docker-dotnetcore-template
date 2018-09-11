@@ -2,7 +2,7 @@
 
 Develop, build, debug or run a .NET Core app in a container using `docker` and `docker-compose` tools.
 
-NOTE: Unless indicated otherwise, assume all shell commands will work in `PowerShell`.
+NOTE: Unless indicated otherwise, assume all shell commands will work in both `bash` and `PowerShell`.
 
 ## Features
 
