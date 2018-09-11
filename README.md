@@ -21,7 +21,7 @@ For simple coding sessions, all you need is [git](https://git-scm.com/), [docker
 * Production image cannot be debugged (because there's no debugger embedded in the image).
 * `OmniSharp` plugin and its integrated unit test runner in `vscode` run locally.
 
-For the best experience, it is recommended to install a compatible .NET Core SDK. This will not be required, if `OmniSharp` tooling can be targeted to talk to the container instead of the local installation. However, local .NET Core SDK is not required to develop in any other editor (but then you may lose debugger support).
+For the best experience, it is recommended to install a compatible .NET Core SDK. This would not be required, if `OmniSharp` tooling could target the container instead of the local build. However, .NET Core SDK is not required to develop in any other editor (but then you may lose debugger support).
 
 ## First things first
 
