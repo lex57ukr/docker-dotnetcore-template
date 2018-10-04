@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "cwd": "/solution",
+            "cwd": "/solution/App/bin/container/Debug/netcoreapp2.1",
             "program": "/solution/App/bin/container/Debug/netcoreapp2.1/App.dll",
             "sourceFileMap": {
                 "/solution": "${workspaceRoot}"
